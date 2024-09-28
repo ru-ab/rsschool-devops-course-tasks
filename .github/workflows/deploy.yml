@@ -19,3 +19,15 @@ jobs:
     steps:
       - name: Terraform format checking
         run: terraform fmt
+  terraform-plan:
+    name: Terraform planning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Terraform planning
+        run: terraform plan
+  terraform-apply:
+    name: Terraform deploying
+    runs-on: ubuntu-latest
+    steps:
+      - name: Terraform deploying
+        run: terraform apply
