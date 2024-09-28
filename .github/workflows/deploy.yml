@@ -25,6 +25,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Set AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          audience: sts.amazonaws.com
+          aws-region: us-east-2
+          role-to-assume: arn:aws:iam::156041410244:role/GithubActionsRole
       - name: Terraform init
         run: terraform init
       - name: Terraform planning
