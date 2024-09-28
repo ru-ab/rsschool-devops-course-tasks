@@ -1,0 +1,21 @@
+name: Terraform Workflow
+
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform-check:
+    name: Terraform check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Terraform format checking
+        run: terraform fmt
