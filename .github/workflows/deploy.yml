@@ -12,6 +12,9 @@ on:
     branches:
       - main
 
+env:
+  AWS_ACC_ID: ${{ secrets.AWS_ACC_ID }}
+
 jobs:
   terraform-check:
     name: Terraform check
@@ -32,7 +35,7 @@ jobs:
         with:
           audience: sts.amazonaws.com
           aws-region: us-east-2
-          role-to-assume: arn:aws:iam::156041410244:role/GithubActionsRole
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACC_ID }}:role/GithubActionsRole
       - name: Terraform init
         run: terraform init
       - name: Terraform planning
@@ -50,7 +53,7 @@ jobs:
         with:
           audience: sts.amazonaws.com
           aws-region: us-east-2
-          role-to-assume: arn:aws:iam::156041410244:role/GithubActionsRole
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACC_ID }}:role/GithubActionsRole
       - name: Terraform init
         run: terraform init
       - name: Terraform deploying
