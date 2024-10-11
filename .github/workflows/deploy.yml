@@ -61,4 +61,4 @@ jobs:
       - name: Terraform init
         run: terraform init
       - name: Terraform deploying
-        run: terraform apply -input=false
+        run: terraform apply -auto-approve
